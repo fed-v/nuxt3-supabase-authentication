@@ -1,4 +1,3 @@
-<!-- pages/register.vue -->
 <template>
   <u-card class="w-full max-w-lg">
 
@@ -20,23 +19,6 @@
 
   </u-card>
 
-
-    <!--<div class="register-container">
-      <h1>Create Account</h1>
-      <form @submit.prevent="registerUser">
-        <div>
-          <label for="email">Email</label>
-          <input type="email" id="email" v-model="email" required />
-        </div>
-        <div>
-          <label for="password">Password</label>
-          <input type="password" id="password" v-model="password" required />
-        </div>
-        <button type="submit">Create Account</button>
-      </form>
-      <p v-if="error">{{ error }}</p>
-    </div>-->
-
 </template>
   
 <script lang="ts" setup>
@@ -49,22 +31,6 @@
   });
 
   const supabase = useSupabaseClient();
-  
-  /*const registerUser = async () => {
-    error.value = ''
-    const { user, session, error: signUpError } = await supabase.auth.signUp({
-      email: email.value,
-      password: password.value
-    })
-  
-    if (signUpError) {
-      error.value = signUpError.message
-    } else {
-      // Redirect to a different page or show a success message
-      router.push('/login')
-    }
-  }*/
-
 
   async function submit(event: FormSubmitEvent<any>) {
 
@@ -78,4 +44,5 @@
     navigateTo('/login');
 
   }
+
 </script>

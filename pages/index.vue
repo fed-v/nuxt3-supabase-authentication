@@ -14,7 +14,7 @@
   
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 
   const user = useSupabaseUser();
   const supabase = useSupabaseClient();

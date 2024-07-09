@@ -35,7 +35,7 @@ SUPABASE_URL=https://<your_supabase_url>
 SUPABASE_KEY=<your_supabase_key>
 ```
 
-6. Connect our login form to Supabase
+6. Connect your login form to Supabase
 
 In `pages/login.vue`:
 
@@ -54,4 +54,53 @@ async function submit(event: FormSubmitEvent<any>) {
 }
 ```
 
+7. Add exceptions to the default redirect to /login
+
+In `nuxt.config.ts`:
+
+```typescript
+supabase: {
+  redirectOptions: {
+    exclude: ["/register"]
+  },
+}
+```
+
+By default, Supabase provides a middleware out of the box which will redirect any page to /login if a user has not logged in. By excluding /register you are able to hit that page without being redirected. 
+
+8. Register a new user
+
+In `pages/register.vue`:
+
+```typescript
+const supabase = useSupabaseClient();
+
+  async function submit(event: FormSubmitEvent<any>) {
+
+    const { email, password } = event.data;
+
+    await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    navigateTo('/login');
+
+  }
+```
+
+9. To logout
+
+In `pages/index.vue`:
+
+```typescript
+const supabase = useSupabaseClient();
+
+const signOut = async () => {
+
+  await supabase.auth.signOut();
+  navigateTo('/login')
+
+};
+```
 Done 🚀
