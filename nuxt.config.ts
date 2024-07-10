@@ -18,13 +18,6 @@ export default defineNuxtConfig({
     redirectOptions: {
       exclude: ["/register"], // exclude the register page from the redirecting to the login page
     },
-  },
-  
-  runtimeConfig: {
-    public: {
-      supabaseUrl: process.env.SUPABASE_URL,
-      supabaseKey: process.env.SUPABASE_KEY,
-    },
-  },
+  }
 
 })

@@ -103,4 +103,17 @@ const signOut = async () => {
 
 };
 ```
+
+10. Fetching data
+
+In `pages/index.vue`:
+
+```typescript
+const supabase = useSupabaseClient();
+
+const { data, error } = await supabase.from('Products').select();
+```
+
+You just need to call the useSupabaseClient() and then use the query methods provided by Supabase (select, insert, delete, update, etc).
+
 Done 🚀

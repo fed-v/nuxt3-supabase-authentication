@@ -11,11 +11,12 @@
     >Sign out</button>
 
   </div>
-  
+
 </template>
 
 <script lang="ts" setup>
 
+  const products = ref([]);
   const user = useSupabaseUser();
   const supabase = useSupabaseClient();
 
@@ -25,5 +26,24 @@
     navigateTo('/login')
 
   };
+
+
+  async function getProducts() {
+
+    const { data, error } = await supabase.from('Products').select();
+
+    if (error) {
+      console.error('Error fetching products:', error);
+    } else {
+      console.log('Products data:', data);
+      products.value = data;
+    }
+    
+  }
+
+
+  onMounted(() => {
+    getProducts()
+  })
 
 </script>
