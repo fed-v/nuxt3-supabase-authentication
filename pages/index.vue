@@ -30,15 +30,26 @@
 
   async function getProducts() {
 
-    const { data, error } = await supabase.from('Products').select();
+    /* Calling a Supabase table from the client */
+    /*const { data, error } = await supabase.from('Products').select();
 
     if (error) {
       console.error('Error fetching products:', error);
     } else {
       console.log('Products data:', data);
       products.value = data;
+    }*/
+
+    /* Calling a Supabase table from using server routes */
+    try {
+      const response = await fetch('/api/fetchProducts');
+      const data = await response.json();
+      products.value = data;
+      console.log('Products data:', data);
+    } catch (error) {
+      console.error('Error fetching products:', error);
     }
-    
+
   }
 
 
