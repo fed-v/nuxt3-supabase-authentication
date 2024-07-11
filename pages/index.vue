@@ -67,6 +67,8 @@
 
   async function getProducts() {
 
+    console.log('Fetching products...');
+
     /* Calling a Supabase table from the client */
     /*const { data, error } = await supabase.from('Products').select();
 
@@ -96,12 +98,15 @@
       body: { productId: id },
     });
 
-    if (error) {
+    // It's throwing an error despite the product being deleted?
+    /*if (error) {
       console.error('Error deleting product:', error);
     } else {
       console.log('Product deleted:', product);
       getProducts();
-    }
+    }*/
+
+    getProducts();
 
   }
 
