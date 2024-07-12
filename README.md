@@ -1,10 +1,23 @@
 # Setup Supabase with Nuxt
 
-How to install Supabase with Nuxt.js.
+A simple NuxtJS application that uses Supabase for user creation and authentication as well as a basic Product catalogue only accessible to logged users.
+
+## Tech Stack
+[![My Skills](https://skillicons.dev/icons?i=vue,nuxt,supabase,tailwind)](https://skillicons.dev)
+
+## Features
+
+* User authentication
+* Route guarding for private pages
+* Register user form and submission
+* Fetch, delete and create data to the Supabase Product database
+* User interface using Nuxt UI component library
+
+
 
 ## Getting Started
 
-1. Create a new Supabase project
+1. Create a new Supabase project at https://supabase.com/
 
 2. Create a new Nuxt.js project
 
@@ -91,7 +104,7 @@ const supabase = useSupabaseClient();
 
 9. To logout
 
-In `pages/index.vue`:
+In `components/HeaderNav.vue`:
 
 ```typescript
 const supabase = useSupabaseClient();
