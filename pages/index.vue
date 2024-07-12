@@ -1,35 +1,21 @@
 <template>
 
-  <div class="text-center flex flex-col space-y-12" v-if="user">
+  <div v-if="user" class="text-center flex flex-col space-y-12">
 
     <h1 class="text-5xl text-white">Welcome!</h1>
 
-    <p>Your email address is: {{ user.email }}</p>
-
-    <button
-      @click="signOut"
-      class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-    >Sign out</button>
-
-    <ProductsTable :data="products" @handleUpdate="refreshProducts" />
+    <div class="rounded-lg divide-y divide-gray-200 dark:divide-gray-800 ring-1 ring-gray-200 dark:ring-gray-800 shadow bg-white dark:bg-gray-900 w-full max-w-lg">
+      <ProductsTable :data="products" @handleUpdate="refreshProducts" />
+    </div>
 
   </div>
 
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 
   const products = ref([]);
   const user = useSupabaseUser();
-  const supabase = useSupabaseClient();
-
-
-  const signOut = async () => {
-
-    await supabase.auth.signOut();
-    navigateTo('/login')
-
-  };
 
 
   async function getProducts():Promise<void> {
