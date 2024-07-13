@@ -9,9 +9,9 @@ export default defineEventHandler(async (event) => {
   const { data, error } = await supabase.from('Products').select();
 
   if (error) {
-    throw createError({ statusCode: 500, message: error.message });
+    return { success: false, error: { message: error.message }, data: null };
   }
 
-  return data;
+  return { success: true, error: null, data };
   
 });

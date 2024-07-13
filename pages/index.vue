@@ -33,6 +33,14 @@
       const data = await response.json();
       products.value = data;
 
+
+      if (!response.ok || data.error) {
+        errorMessage.value = data.error.message;
+      } else {
+        products.value = data.data;
+        errorMessage.value = '';
+      }
+
     } catch (error) {
       console.error('Error fetching products:', error);
       errorMessage.value = 'There was an error fetching products. Please try again later.';
