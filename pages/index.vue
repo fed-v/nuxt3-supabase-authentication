@@ -8,6 +8,12 @@
       <ProductsTable :data="products" @handleUpdate="refreshProducts" />
     </div>
 
+    <NuxtLink to="/add-product" class="text-white bg-blue-500 hover:bg-blue-700 rounded-lg px-4 py-2 w-max self-end">
+      Add a product
+    </NuxtLink>
+
+    <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
+
   </div>
 
 </template>
@@ -16,23 +22,31 @@
 
   const products = ref([]);
   const user = useSupabaseUser();
+  const errorMessage = ref<string>('');
 
 
   async function getProducts():Promise<void> {
 
     try {
+
       const response = await fetch('/api/getProducts');
       const data = await response.json();
       products.value = data;
+
     } catch (error) {
       console.error('Error fetching products:', error);
+      errorMessage.value = 'There was an error fetching products. Please try again later.';
     }
 
   }
 
 
-  function refreshProducts():void {
-    getProducts();
+  // This function will be called when the child component emits the "handleUpdate" event
+  function refreshProducts(errorMsg: string):void {
+
+    // If there's an error message, display it. Otherwise, refresh the products
+    errorMsg ? errorMessage.value = errorMsg : getProducts();
+
   }
 
 

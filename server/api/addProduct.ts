@@ -8,20 +8,16 @@ export default defineEventHandler(async (event) => {
 
     // Read the request body
     const body = await readBody(event);
-  
+
     // Extract the parameter from the body
-    const { productId } = body;
+    const { productName, productDescription, productPrice } = body;
 
     // Delete the product from the database    
     const { error } = await supabase
     .from('Products')
-    .delete()
-    .eq('id', productId);
-
-    if (error) {
-        return { success: false, error: error.message };
-    }
-    
-    return { success: true };
+    .insert([
+        { name: productName, description: productDescription, price: productPrice || 0 },
+    ])
+    .select();
 
 });

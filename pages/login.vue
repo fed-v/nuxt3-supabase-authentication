@@ -7,6 +7,7 @@
     </template>
 
     <u-form :state="state" @submit="submit" class="space-y-6">
+
       <u-form-group label="Email">
         <u-input v-model="state.email" placeholder="Email" />
       </u-form-group>
@@ -19,6 +20,7 @@
         <u-button type="submit" class="space-y-6">Login</u-button>
         <NuxtLink to="/register">Create an account</NuxtLink>
       </UButtonGroup>
+      
     </u-form>
 
   </u-card>
@@ -27,7 +29,7 @@
 
 <script lang="ts" setup>
 
-  import type {FormSubmitEvent} from '#ui/types';
+  import type { FormSubmitEvent } from '#ui/types';
 
   const state = reactive({
     email: '',
