@@ -12,12 +12,18 @@ export default defineEventHandler(async (event) => {
     // Extract the parameter from the body
     const { productName, productDescription, productPrice } = body;
 
-    // Delete the product from the database    
+    // Add product to database    
     const { error } = await supabase
     .from('Products')
     .insert([
         { name: productName, description: productDescription, price: productPrice || 0 },
     ])
     .select();
+
+    if (error) {
+        return { success: false, error: error.message };
+    }
+    
+    return { success: true };
 
 });
