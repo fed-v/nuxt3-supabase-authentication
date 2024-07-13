@@ -12,6 +12,7 @@ A simple NuxtJS application that uses Supabase for user creation and authenticat
 * Register user form and submission
 * Fetch, delete and create data to the Supabase Product database
 * User interface using Nuxt UI component library
+* Error management for both HTTP errors and API-specific errors
 
 
 
@@ -119,14 +120,50 @@ const signOut = async () => {
 
 10. Fetching data
 
-In `pages/index.vue`:
+In `server/api/getProducts`:
 
 ```typescript
-const supabase = useSupabaseClient();
+const config = useRuntimeConfig();
+const supabase = createClient(config.public.supabaseUrl, config.public.supabaseKey);
 
 const { data, error } = await supabase.from('Products').select();
 ```
 
-You just need to call the useSupabaseClient() and then use the query methods provided by Supabase (select, insert, delete, update, etc).
+You just need to call the useSupabaseClient() with the right environmental variables and then use the query methods provided by Supabase (select, insert, delete, update, etc).
+
+11. Error management
+
+It is best practice to ensure that your error handling is robust and capable of managing both HTTP errors and API-specific errors correctly.
+
+In `pages/*`:
+
+```typescript
+try {
+
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+
+  if (error) {
+    // Handle API error
+  } 
+
+} catch (err) {
+  // Handle HTTP error
+}
+```
+
+In `server/api/*`:
+
+```typescript
+const { data, error } = await supabase.from('Products').select();
+
+if (error) {
+  return { success: false, error: { message: error.message }, data: null };
+}
+
+return { success: true, error: null, data };
+```
 
 Done 🚀
