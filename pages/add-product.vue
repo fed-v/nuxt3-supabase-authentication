@@ -59,14 +59,14 @@
           },
       });
 
-      if (error.value) {
+      if(error.value) {
           throw new Error(error.value.message);
       }
 
       errorMessage.value = '';
       navigateTo('/');
 
-    } catch (err) {
+    } catch(err) {
       console.error('Error creating product:', err.message);
       errorMessage.value = err.message;
     }

@@ -15,6 +15,7 @@
         <!-- Add a delete button to each row in the actions column -->
         <template #actions-data="{ row }">
             <UButton @click="deleteProduct(row.id)" color="gray" variant="ghost" icon="i-heroicons-trash-20-solid" />
+            <UButton @click="updateProduct(row.id)" color="gray" variant="ghost" icon="i-heroicons-adjustments-horizontal-20-solid" />
         </template>
 
     </UTable>
@@ -80,6 +81,11 @@
         // Emit the update message to the parent component. If there's an error, send the error message
         emit("handleUpdate", errorMessage.value);
 
+    }
+
+    // Navigate to the product update page to update this product
+    async function updateProduct(id: string) {
+        navigateTo(`/products/${id}`);
     }
 
     // Define the emit function
