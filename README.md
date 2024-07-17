@@ -14,7 +14,8 @@ A simple NuxtJS application that uses Supabase for user creation and authenticat
 * User interface using Nuxt UI component library
 * Error management for both HTTP errors and API-specific errors
 
-
+![Login screen](login.png?raw=true "Login screen")
+![Products DB screen](products.png?raw=true "Products DB screen")
 
 ## Getting Started
 
