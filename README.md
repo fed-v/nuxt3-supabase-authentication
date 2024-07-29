@@ -24,7 +24,7 @@ A simple NuxtJS application that uses Supabase for user creation and authenticat
 2. Create a new Nuxt.js project
 
 ```bash
-npx nuxi@latest init supabase-nuxt
+npx nuxi@latest init <project name>
 ```
 
 3. Install Supabase module
@@ -43,7 +43,7 @@ export default {
 }
 ```
 
-5. Add Supabase URL and Key to `.env`
+5. Create a `.env` file from `.env.dist` and set it's values
 
 ```
 SUPABASE_URL=https://<your_supabase_url>
