@@ -3,7 +3,7 @@
 A simple NuxtJS application that uses Supabase for user creation and authentication as well as a basic Product catalogue only accessible to logged users.
 
 ## Tech Stack
-[![My Skills](https://skillicons.dev/icons?i=vue,nuxt,supabase,tailwind)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=vue,nuxt,supabase,tailwind,docker)](https://skillicons.dev)
 
 ## Features
 
@@ -13,6 +13,7 @@ A simple NuxtJS application that uses Supabase for user creation and authenticat
 * Fetch, delete and create data to the Supabase Product database
 * User interface using Nuxt UI component library
 * Error management for both HTTP errors and API-specific errors
+* Dockerfile to efficiently build the application in both development and production environments while keeping the final production image as lean as possible.
 
 ![Login screen](login.png?raw=true "Login screen")
 ![Products DB screen](products.png?raw=true "Products DB screen")
@@ -166,5 +167,31 @@ if (error) {
 
 return { success: true, error: null, data };
 ```
+
+## Docker
+
+Create and start the development container:
+
+  ```bash
+  docker compose up --build -d
+  ```
+  
+Stop and remove the development container:
+
+  ```bash
+  docker compose down
+  ```
+
+Create and start the production container:
+
+  ```bash
+  docker compose -f compose.production.yaml up --build -d
+  ```
+
+Stop and remove the production container:
+
+  ```bash
+  docker compose -f compose.production.yaml down
+  ```
 
 Done 🚀
