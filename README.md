@@ -14,6 +14,9 @@ A simple NuxtJS application that uses Supabase for user creation and authenticat
 * User interface using Nuxt UI component library
 * Error management for both HTTP errors and API-specific errors
 * Dockerfile to efficiently build the application in both development and production environments while keeping the final production image as lean as possible.
+* Husky for git pre-commit hook
+* ESLint for JavaScript and TypeScript linting
+* Prettier for enforcing consistent code formatting
 
 ![Login screen](login.png?raw=true "Login screen")
 ![Products DB screen](products.png?raw=true "Products DB screen")
