@@ -3,10 +3,7 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
   
-  modules: [
-    '@nuxt/ui',
-    '@nuxtjs/supabase'
-  ],
+  modules: ['@nuxt/ui', '@nuxtjs/supabase', "@nuxt/eslint"],
 
   
   supabase: {
