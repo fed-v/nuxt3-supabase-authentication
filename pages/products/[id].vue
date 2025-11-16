@@ -6,7 +6,7 @@
         Update product
       </template>
   
-      <u-form :state="state" @submit="submit" class="space-y-6">
+      <u-form class="space-y-6" :state="state" @submit="submit">
   
         <u-form-group label="Name">
           <u-input v-model="state.name" placeholder="Name" required />

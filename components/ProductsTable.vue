@@ -14,8 +14,8 @@
 
         <!-- Add a delete button to each row in the actions column -->
         <template #actions-data="{ row }">
-            <UButton @click="deleteProduct(row.id)" color="gray" variant="ghost" icon="i-heroicons-trash-20-solid" />
-            <UButton @click="updateProduct(row.id)" color="gray" variant="ghost" icon="i-heroicons-adjustments-horizontal-20-solid" />
+            <UButton color="gray" variant="ghost" icon="i-heroicons-trash-20-solid" @click="deleteProduct(row.id)"  />
+            <UButton color="gray" variant="ghost" icon="i-heroicons-adjustments-horizontal-20-solid" @click="updateProduct(row.id)" />
         </template>
 
     </UTable>

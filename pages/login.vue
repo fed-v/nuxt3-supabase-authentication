@@ -6,7 +6,7 @@
       Login
     </template>
 
-    <u-form :state="state" @submit="submit" class="space-y-6">
+    <u-form class="space-y-6" :state="state" @submit="submit">
 
       <u-form-group label="Email">
         <u-input v-model="state.email" placeholder="Email" required />

@@ -2,11 +2,11 @@
 
     <div class="bg-gray-900 py-6 px-10 flex justify-between fixed w-full">
 
-        <p v-if="user">Your email address is: {{ user.email }}</p>
+        <p v-if="user" class="text-red-500">Your email address is: {{ user.email }}</p>
         
         <div class="flex flex-col">
 
-            <button @click="signOut" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-max self-end">
+            <button  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-max self-end" @click="signOut">
                 Sign out
             </button>
             
